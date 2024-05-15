@@ -1,0 +1,52 @@
+package.json is configuration for npm
+
+bulnder will combine all html, js, css file into one file for production (parcel, veet, .. packegs)
+
+"parcel": "^2.12.0"
+"parcel": "~2.12.0"
+"parcel": "2.12.0"
+
+what is this ^(caret), minor update will update automatically(2.12.1) and sometimes ~(tild) major update will update automatically(3.0.0)
+if you remove ^ and ~ didn't apply update
+---
+package-lock-json
+it will lock current version when we install and maintain then dependency
+"integrity": "sha512-y5+tLQyV8pg3fsiln67BVLD1P13Eg4lh5RW9mF0zUuvLrv9uIQ4MCL+CRT+FTsBlBjcIan6PGsLcBN0m3ClUyQ==",
+
+here sha512 is hashcode (to run local and production as it as)
+
+
+nodemodules(we can say collection of dependency)
+
+transitive dependency(dependency having dependency -> having dependency-> having dependency)
+
+npm is for install package
+npx is for execute the package(run)
+
+type = module in script tag html
+
+parcel
+
+    Dev build
+    local server
+    HMR hot module replacement
+    File watching algoritm  written in c++
+    Caching - Faster Builds(.parcel-cache), binary files
+    Image Optimization
+    Minification
+    Bundling
+    Compressing
+    Consistent Hashing
+    Code splitting
+    Differential Bundling(example different browsers, different devices)
+    Error Handling(suggestions)
+    Https also will work
+    Tree Shaking - remove unused code
+    parceljs.org
+
+npx parcel index.html(root)
+npx parcel build index.html(for production)(
+    when we are running "main": "App.js", we need to remove because it host match
+)
+
+done

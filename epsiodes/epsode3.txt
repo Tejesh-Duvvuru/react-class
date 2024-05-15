@@ -1,0 +1,29 @@
+package.json
+
+scripts
+
+npm run script name
+npm scriptname (shortcut) it will work only start script 
+it will call the particular script
+
+
+const heading = React.createElement(
+  "h1",
+  { id: "heading", class: "heading" },
+  "Hello"
+);  (React)
+
+ <h1 class="heading">I am tejesh</h1>  (html)
+
+
+ comapre above two react and html, html easy and understand
+
+
+ that's why jsx came into picture  
+
+ jsx is not html in js
+ jsx is difference then html
+ jsx html like syntax
+
+
+ remaining 55mins
