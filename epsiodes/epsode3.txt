@@ -24,6 +24,10 @@ const heading = React.createElement(
  jsx is not html in js
  jsx is difference then html
  jsx html like syntax
+ jsx is not a react
 
+inside jsx we can inject js code by using {}
 
- remaining 55mins
+<h2>{100 + 100} </h2>
+
+fineshed
