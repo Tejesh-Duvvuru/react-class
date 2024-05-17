@@ -18,9 +18,9 @@ const heading = React.createElement(
 
  comapre above two react and html, html easy and understand
 
-
+JSX (JavaScript XML, formally JavaScript Syntax eXtension) is a JavaScript extension that allows creation of Document Object Model (DOM) trees using an XML-like syntax.
  that's why jsx came into picture  
-
+<h1 className="heading">I am tejesh</h1>  (html)
  jsx is not html in js
  jsx is difference then html
  jsx html like syntax
