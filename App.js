@@ -1534,17 +1534,17 @@ const Body = () => {
         {resturantsData.map((item, index) => (
           /**
            * key is used for unique of the list
-           * when ever is there an update or add same level of container
+           * key is only thing identify dom things
+           * when ever is there an update or add same level of container(html level)
            * if we don't give key it will re-render entire level
-           * in our case restaurantcard will rerender if we don't give keys,
+           * in our case restaurantcard will rerender if we don't give key ,
            *
            * maximum don't use index for key
            * https://react.dev/learn/rendering-lists#why-does-react-need-keys
+           * https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
            */
           <ResrtaurantCard resData={item} key={index} />
         ))}
-
-        {/* <ResrtaurantCard resData={resturantsData[0]} /> */}
       </div>
     </div>
   );
@@ -1561,4 +1561,4 @@ const AppLayout = () => {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //for render component we need to pass <component name/>
-root.render(<AppLayout />);
+// root.render(<AppLayout />);
