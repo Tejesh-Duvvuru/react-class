@@ -46,7 +46,7 @@ const Header = () => {
 const rescsrdStylecard = {
   backgroundColor: "whitesmoke",
 };
-const ResrtaurantCard = (props) => {
+const RestaurantCard = (props) => {
   /**
    * props is short from name properties
    * props is nothing but a argument passing a function
@@ -80,7 +80,7 @@ const ResrtaurantCard = (props) => {
  * @returns
  */
 
-let resturantsData = [
+let restaurantsData = [
   {
     info: {
       id: "11091",
@@ -1531,7 +1531,7 @@ const Body = () => {
     <div className="body">
       <div className="search">Search</div>
       <div className="res-cards-container">
-        {resturantsData.map((item, index) => (
+        {restaurantsData.map((item, index) => (
           /**
            * key is used for unique of the list
            * key is only thing identify dom things
@@ -1543,7 +1543,7 @@ const Body = () => {
            * https://react.dev/learn/rendering-lists#why-does-react-need-keys
            * https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
            */
-          <ResrtaurantCard resData={item} key={index} />
+          <RestaurantCard resData={item} key={index} />
         ))}
       </div>
     </div>
@@ -1561,4 +1561,4 @@ const AppLayout = () => {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //for render component we need to pass <component name/>
-// root.render(<AppLayout />);
+root.render(<AppLayout />);
