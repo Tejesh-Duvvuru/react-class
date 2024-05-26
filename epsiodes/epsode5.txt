@@ -1,0 +1,23 @@
+there are two types of Export/Import
+
+Default Export/Import
+
+export default Component;
+import Component from "path";
+
+
+Named Export/Import(In single export multiple times)
+
+export Component
+export Component
+
+import {Component} from "path";
+
+React Hooks
+Normal js functions(utility)
+Written by facebook developers
+written in inside React
+- useState()
+- useEffect()
+
+React will make dom operation super fast that's why it is fast
