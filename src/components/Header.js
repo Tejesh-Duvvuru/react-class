@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 
 const Header = () => {
+  const [login, setLogin] = useState("Login");
+
+  //when a setstate variable entire component will rerenders
   return (
     <div className="header">
       <div>
@@ -12,6 +16,13 @@ const Header = () => {
           <li>About us</li>
           <li>Contact us</li>
           <li>Cart</li>
+          <button
+            onClick={() => {
+              login === "Login" ? setLogin("Logout") : setLogin("Login");
+            }}
+          >
+            {login}
+          </button>
         </ul>
       </div>
     </div>
