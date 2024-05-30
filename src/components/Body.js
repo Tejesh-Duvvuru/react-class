@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import restaurantsData from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 // react hook is a normalfunction which is a like utility
 
 const Body = () => {
@@ -106,7 +107,9 @@ const Body = () => {
            * https://react.dev/learn/rendering-lists#why-does-react-need-keys
            * https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
            */
-          <RestaurantCard resData={item} key={index} />
+          <Link to={"/restaurant/" + item?.info?.id}>
+            <RestaurantCard resData={item} key={item?.info?.id} />
+          </Link>
         ))}
       </div>
     </div>

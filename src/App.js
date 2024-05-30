@@ -2,6 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  BrowserRouter,
+  Switch,
+  Outlet,
+} from "react-router-dom";
+import Error from "./components/Error";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import RestaurantMenuCard from "./components/RestaurantMenuCard";
 
 /**
  * config (data) driven ui
@@ -14,11 +25,54 @@ const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      {/* Oultet will replace by the childeren component */}
+      <Outlet />
     </div>
   );
 };
 
+const appRouter = createBrowserRouter([
+  // {
+  //   path: "/",
+  //   element: <AppLayout></AppLayout>,
+  // },
+
+  // we can use <AppLayout></AppLayout> or <AppLayout />  both will work
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurant/:restaurantId",
+        element: <RestaurantMenuCard />,
+      },
+    ],
+    errorElement: <Error />,
+  },
+  // {
+  //   path: "/About",
+  //   element: <About />,
+  // },
+  // {
+  //   path: "/Contact",
+  //   element: <Contact />,
+  // },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //for render component we need to pass <component name/>
-root.render(<AppLayout />);
+// root.render(<AppLayout />);
+
+root.render(<RouterProvider router={appRouter} />);
