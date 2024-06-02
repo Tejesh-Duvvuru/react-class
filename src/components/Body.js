@@ -3,6 +3,7 @@ import restaurantsData from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 // react hook is a normalfunction which is a like utility
 
 const Body = () => {
@@ -10,6 +11,7 @@ const Body = () => {
   const [resData, setResData] = useState([]);
   const [filterResData, setFilterResData] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const onLineStatus = useOnlineStatus();
   //react will find the older virtual dom and new virtual dom
   // if we kepp const also it will change because when where a setfunction it will call coponent again so it is new again
 
@@ -18,6 +20,9 @@ const Body = () => {
   // console.log("arr", arr);
   // let [resData, setResData] = arr;
   // console.log("resData", resData);
+
+  if (onLineStatus === false)
+    return <h1>Opps! you system went to offline mode</h1>;
 
   useEffect(() => {
     async function fetchResData() {
@@ -107,8 +112,8 @@ const Body = () => {
            * https://react.dev/learn/rendering-lists#why-does-react-need-keys
            * https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
            */
-          <Link to={"/restaurant/" + item?.info?.id}>
-            <RestaurantCard resData={item} key={item?.info?.id} />
+          <Link to={"/restaurant/" + item?.info?.id} key={item?.info?.id}>
+            <RestaurantCard resData={item} />
           </Link>
         ))}
       </div>
