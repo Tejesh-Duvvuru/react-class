@@ -60,3 +60,7 @@
   height: 300px;
   margin: 5px;
 }
+
+.user-card {
+  border: 2px sandybrown solid;
+}

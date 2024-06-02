@@ -1,0 +1,28 @@
+class based components
+
+constructor
+props
+state
+setState()
+render()
+componentDidimount
+
+react life cycle
+
+https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+the first mistake what we do is compare of class components and function components, both are different
+
+most of them useEffect will compare with componentDidimount but useEffect will do (componentWillUnmount, componentDidUpdate, componentDidMount)
+
+
+useEffect(() => {
+    return (
+      // here in useEffect return is like componentWillUnmount
+      <h1></h1>
+    );
+    //[] with this we can say componentDidMount
+    //[dependency array with variable], componentDidUpdate
+  }, []);
+
+
