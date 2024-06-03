@@ -7,3 +7,26 @@ customHook
 
 rule while creating custom hook keep name prefix as use(it is not mandatory),
 but we can recogniize
+
+to make web browser offline don't wan't to turn on wifi, go to the inspection section -> network tab -> No throttling(drop down) and offline
+
+
+//bundles when ever app grows large our index.js(single) will become large size 
+to load it performance issue will come
+// that's why we make chunks
+//lets take an example paytm, in that we different types of app, booking section, payment section, insurance...
+//we make  each app into chunks
+//for that react will provide a method "lazy loading"
+// to see go to the inspection section -> network tab -> js , here you can see the bundles
+
+/**
+ * how to bundles the react below are different names but are all small
+ * Chunking
+ * Code Splitting
+ * Dynamic Bundling
+ * lazy loading
+ * on demand loading
+ * Dynamic import
+ * @returns
+ *
+ */

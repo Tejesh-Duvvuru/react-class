@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -13,12 +13,26 @@ import Error from "./components/Error";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenuCard from "./components/RestaurantMenuCard";
+// import Instamart from "./components/Instamart";
+const Instamart = lazy(() => import("./components/Instamart"));
 
 /**
  * config (data) driven ui
  * which means let's take a example swigy(ui), it shows different ui and options(offers, resturats)
  * based on location, day, time etc.., this is known as cofig(data) driven ui
  * @returns
+ */
+
+/**
+ * how to bundles the react below are different names but are all small
+ * Chunking
+ * Code Splitting
+ * Dynamic Bundling
+ * lazy loading
+ * on demand loading
+ * Dynamic import
+ * @returns
+ *
  */
 
 const AppLayout = () => {
@@ -53,6 +67,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/mart",
+        element: (
+          <Suspense fallback={<h1>Loading..</h1>}>
+            <Instamart />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurant/:restaurantId",

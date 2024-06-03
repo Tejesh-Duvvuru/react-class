@@ -42,6 +42,9 @@ const Header = () => {
             <Link to="/contact">Contact us</Link>
             {/* <a href="/contact">Contact us</a> */}
           </li>
+          <li>
+            <Link to="/mart">Insta Mart</Link>
+          </li>
           <li>Cart</li>
           <button
             onClick={() => {
