@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromtedLable } from "./RestaurantCard";
 import restaurantsData from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -12,6 +12,7 @@ const Body = () => {
   const [filterResData, setFilterResData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onLineStatus = useOnlineStatus();
+  const RestaurantCardWithLable = withPromtedLable(RestaurantCard);
   //react will find the older virtual dom and new virtual dom
   // if we kepp const also it will change because when where a setfunction it will call coponent again so it is new again
 
@@ -31,6 +32,7 @@ const Body = () => {
           "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.37240&lng=78.43780&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
         const jsonData = await rawData.json();
+        console.log("pppppp", jsonData);
         const restaurantsData =
           jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants;
@@ -58,16 +60,17 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="search">
+      <div className="">
         <input
           type="text"
           value={searchText}
           onChange={(event) => {
             setSearchText(event.target.value);
           }}
+          className="border-2 border-yellow-600 mr-5 rounded px-4   mx-2 py-1 my-1 "
         />
         <button
-          className="filter-btn"
+          className="filter-btn bg-yellow-600 rounded text-white px-4   mx-2 py-1 my-1"
           onClick={() => {
             console.log("searchtext", searchText);
             // we are taking resData which is data doesn't changes if there is a filter also
@@ -83,8 +86,22 @@ const Body = () => {
         >
           Search
         </button>
+        <button
+          className="filter-btn bg-yellow-600 rounded text-white mx-2 p-1 px-4 my-1"
+          onClick={() => {
+            let filterlist = resData.filter((res) => {
+              console.log("res.info.avgRating", res.info.avgRating);
+              return res.info.avgRating > 4.4;
+            });
+            console.log("filterlist", filterlist);
+            // setResData(filterlist);
+            setFilterResData(filterlist);
+          }}
+        >
+          Top Rated Resturant
+        </button>
       </div>
-      <div>
+      {/* <div>
         <button
           className="filter-btn"
           onClick={() => {
@@ -98,8 +115,8 @@ const Body = () => {
         >
           Top Rated Resturant
         </button>
-      </div>
-      <div className="res-cards-container">
+      </div> */}
+      <div className="mt-3 hover:cursor-pointer flex flex-wrap">
         {filterResData.map((item, index) => (
           /**
            * key is used for unique of the list

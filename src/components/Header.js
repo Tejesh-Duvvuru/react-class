@@ -22,34 +22,35 @@ const Header = () => {
     console.log("header render, variable changes");
   }, [login]);
   return (
-    <div className="header">
+    <div className="header flex flex-row justify-between px-1 bg-green-950 shadow-2xl">
       <div>
-        <img className="logo" src={LOGO_URL} />
+        <img className="w-24" src={LOGO_URL} alt="logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="flex  items-center">
+        <ul className="flex flex-row  list-none text-white ">
+          <li className="mx-2">
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/about">About us</Link>
+          <li className="mx-2">
+            <Link to="/about">About Us</Link>
             {/* the difference between <a> and <Link
             is while using a tag entire page will render again but in
             Link tah it will replace the component so it will not render entire the render tag */}
             {/* <a href="/about">About us</a> */}
           </li>
-          <li>
-            <Link to="/contact">Contact us</Link>
+          <li className="mx-2">
+            <Link to="/contact">Contact Us</Link>
             {/* <a href="/contact">Contact us</a> */}
           </li>
-          <li>
+          <li className="mx-2">
             <Link to="/mart">Insta Mart</Link>
           </li>
-          <li>Cart</li>
+          <li className="mx-2">Cart</li>
           <button
             onClick={() => {
               login === "Login" ? setLogin("Logout") : setLogin("Login");
             }}
+            className="mx-2"
           >
             {login}
           </button>

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, StrictMode, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -97,4 +97,4 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 //for render component we need to pass <component name/>
 // root.render(<AppLayout />);
 
-root.render(<RouterProvider router={appRouter} />);
+root.render(<StrictMode><RouterProvider router={appRouter} /></StrictMode> );

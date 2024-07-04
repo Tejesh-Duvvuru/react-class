@@ -11,20 +11,36 @@ const RestaurantCard = (props) => {
    */
   const { resData } = props;
   const { name, cuisines, avgRating } = resData?.info;
+  const { deliveryTime } = resData?.info?.sla;
+  // console.log("pppppppppppppp", resData?.info?.sla);
   // const { resName, cusine, img } = resData;
   return (
-    <div className="res-card" style={rescardStylecard}>
+    <div
+      className="mx-1.5  my-1 w-[250px] p-1 rounded-md bg-slate-400 shadow-md"
+      style={rescardStylecard}
+    >
       <img
-        className="res-card-img"
+        className="res-card-img  w-[250px] rounded-t"
         src={CDN_URL_IMG + resData.info.cloudinaryImageId}
         alt="res img"
       />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(",")}</h4>
+      <h3 className="text-black text-base max-w-prose font-medium">{name}</h3>
+      <h4 className="">{cuisines.join(",")}</h4>
       <h4>{avgRating} stars</h4>
-      <h4>20 mins</h4>
+      <h4>{deliveryTime} mins</h4>
     </div>
   );
+};
+
+export const withPromtedLable = (RestaurantCard) => {
+  return () => {
+    return (
+      <div>
+        <label>Promted</label>
+        <RestaurantCard />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
