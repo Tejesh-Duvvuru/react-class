@@ -32,15 +32,15 @@ const Body = () => {
           "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.37240&lng=78.43780&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
         const jsonData = await rawData.json();
-        console.log("pppppp", jsonData);
+        // console.log("pppppp", jsonData);
         const restaurantsData =
           jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants;
-        console.log(
-          "swiggy data",
-          jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants
-        );
+        // console.log(
+        //   "swiggy data",
+        //   jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        //     ?.restaurants
+        // );
         //setResData we are setting for constitant data which will not change when filter is applied
         setResData(restaurantsData);
         //serFilterresData is setting manupulate dat
@@ -130,7 +130,11 @@ const Body = () => {
            * https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
            */
           <Link to={"/restaurant/" + item?.info?.id} key={item?.info?.id}>
-            <RestaurantCard resData={item} />
+            {index === 1 ? (
+              <RestaurantCardWithLable resData={item}></RestaurantCardWithLable>
+            ) : (
+              <RestaurantCard resData={item} />
+            )}
           </Link>
         ))}
       </div>

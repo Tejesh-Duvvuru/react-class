@@ -97,4 +97,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 //for render component we need to pass <component name/>
 // root.render(<AppLayout />);
 
-root.render(<StrictMode><RouterProvider router={appRouter} /></StrictMode> );
+root.render(<RouterProvider router={appRouter} />);
+
+// <StrictMode>
+/* </StrictMode> */

@@ -1,0 +1,11 @@
+Higher order component
+It is pure function(component), it enchance the component with feature
+
+Resturant card with promted label
+
+
+controlled and uncontrolled 
+
+
+all react applications is two layer data layer and ui layer
+ui layer(jsx), data layer(props, state, {})
