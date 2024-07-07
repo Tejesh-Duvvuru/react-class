@@ -4,8 +4,15 @@ It is pure function(component), it enchance the component with feature
 Resturant card with promted label
 
 
-controlled and uncontrolled 
+controlled and uncontrolled
+=> controlled means the component which is controlled by the parent component(statemangement) 
+=> uncontrolled means the component which is controlled by it self
 
 
 all react applications is two layer data layer and ui layer
 ui layer(jsx), data layer(props, state, {})
+
+state lift(callback)
+
+useContext (statemangement)
+
