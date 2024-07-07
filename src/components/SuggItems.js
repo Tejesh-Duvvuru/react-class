@@ -6,7 +6,7 @@ const SuggItems = (props) => {
     <div>
       <h1>{name}</h1>
       <h2>Rs {price ? price / 100 : defaultPrice / 100}</h2>
-      <h1 className="border-b-2 border-gray-500"></h1>
+      <h1 className="border-b-2  border-green-950"></h1>
     </div>
   );
 };

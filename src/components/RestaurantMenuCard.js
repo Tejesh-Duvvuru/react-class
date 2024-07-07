@@ -20,10 +20,12 @@ const RestaurantMenuCard = () => {
 
   return (
     <div className="flex flex-col items-center py-6">
-      <h1 className="font-bold text-lg">{name}</h1>
-      <h2>{cuisines.join(",")}</h2>
-      <h2>cost for two {costForTwo / 100} rs</h2>
-      <h2>{avgRating}</h2>
+      <div className="border-2 px-20 py-5 shadow-md rounded-md">
+        <h1 className="font-bold text-lg">{name}</h1>
+        <h2>{cuisines.join(",")}</h2>
+        <h2>cost for two {costForTwo / 100} rs</h2>
+        <h2>rating: {avgRating}</h2>
+      </div>
       {itemCategory.map((item, index) => (
         <ResItemCategory
           data={item}
@@ -32,7 +34,7 @@ const RestaurantMenuCard = () => {
           setShowIndex={() => {
             //state lifiting
             //this component is called controlled component because it is controlling it child by the state
-            setShowIndex(index);
+            index === showIndex ? setShowIndex(null) : setShowIndex(index);
           }}
         />
       ))}
