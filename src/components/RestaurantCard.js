@@ -1,4 +1,6 @@
 import { CDN_URL_IMG } from "../utils/constants";
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
 
 const rescardStylecard = {
   backgroundColor: "whitesmoke",
@@ -9,6 +11,7 @@ const RestaurantCard = (props) => {
    * props is nothing but a argument passing a function
    *
    */
+  const data = useContext(UserContext);
   const { resData } = props;
   const { name, cuisines, avgRating } = resData?.info;
   const { deliveryTime } = resData?.info?.sla;
@@ -28,6 +31,7 @@ const RestaurantCard = (props) => {
       <h4 className="">{cuisines.join(",")}</h4>
       <h4>{avgRating} stars</h4>
       <h4>{deliveryTime} mins</h4>
+      <h4>{data.loggedInUser}</h4>
     </div>
   );
 };

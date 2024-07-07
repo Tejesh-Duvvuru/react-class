@@ -8,6 +8,7 @@ const RestaurantMenuCard = () => {
   let { restaurantId } = useParams();
   let resMenu = useRestaurantMenu(restaurantId);
   const [showIndex, setShowIndex] = useState(0);
+  const dummy = "dummy data";
   if (resMenu.length === 0) return <Shimmer />;
   let itemCategory =
     resMenu?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -36,6 +37,7 @@ const RestaurantMenuCard = () => {
             //this component is called controlled component because it is controlling it child by the state
             index === showIndex ? setShowIndex(null) : setShowIndex(index);
           }}
+          dummy={dummy}
         />
       ))}
     </div>

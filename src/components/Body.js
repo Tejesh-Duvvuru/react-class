@@ -1,9 +1,10 @@
 import RestaurantCard, { withPromtedLable } from "./RestaurantCard";
 import restaurantsData from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 // react hook is a normalfunction which is a like utility
 
 const Body = () => {
@@ -13,6 +14,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const onLineStatus = useOnlineStatus();
   const RestaurantCardWithLable = withPromtedLable(RestaurantCard);
+  const { setUserName, loggedInUser } = useContext(UserContext);
   //react will find the older virtual dom and new virtual dom
   // if we kepp const also it will change because when where a setfunction it will call coponent again so it is new again
 
@@ -100,6 +102,16 @@ const Body = () => {
         >
           Top Rated Resturant
         </button>
+      </div>
+      <div>
+        <label>username </label>
+        <input
+          className="border border-green-950"
+          value={loggedInUser}
+          onChange={(event) => {
+            setUserName(event.target.value);
+          }}
+        />
       </div>
       {/* <div>
         <button

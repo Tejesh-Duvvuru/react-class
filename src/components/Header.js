@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [login, setLogin] = useState("Login");
+  const data = useContext(UserContext);
 
   //when a setstate variable entire component will rerenders
 
@@ -54,6 +56,7 @@ const Header = () => {
           >
             {login}
           </button>
+          <li className="mx-2">{data.loggedInUser}</li>
         </ul>
       </div>
     </div>

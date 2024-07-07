@@ -1,4 +1,4 @@
-import React, { lazy, StrictMode, Suspense } from "react";
+import React, { lazy, StrictMode, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -13,6 +13,7 @@ import Error from "./components/Error";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenuCard from "./components/RestaurantMenuCard";
+import UserContext from "./utils/UserContext";
 // import Instamart from "./components/Instamart";
 const Instamart = lazy(() => import("./components/Instamart"));
 
@@ -36,12 +37,23 @@ const Instamart = lazy(() => import("./components/Instamart"));
  */
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    //api call
+    setUserName("tejesh");
+  }, []);
   return (
-    <div className="app">
-      <Header />
-      {/* Oultet will replace by the childeren component */}
-      <Outlet />
-    </div>
+    //UserContext.Provider is setting a value and writting businnse logic
+    //we can wrap only which part we need
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="app">
+        {/* <UserContext.Provider value={{ loggedInUser: "teja" }}> */}
+        <Header />
+        {/* </UserContext.Provider> */}
+        {/* Oultet will replace by the childeren component */}
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 

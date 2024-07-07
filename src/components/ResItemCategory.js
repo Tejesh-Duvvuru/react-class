@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SuggItems from "./SuggItems";
 
-const ResItemCategory = ({ data, showItem, setShowIndex }) => {
+const ResItemCategory = ({ data, showItem, setShowIndex, dummy }) => {
   // const [showItem, setShowItem] = useState(true);
   return (
     <div className="p-3">
@@ -18,7 +18,10 @@ const ResItemCategory = ({ data, showItem, setShowIndex }) => {
         <h1 className="">▼</h1>
       </div>
       {data?.card?.card?.itemCards.map(
-        (item) => showItem && <SuggItems data={item} key={item.card.info.id} />
+        (item) =>
+          showItem && (
+            <SuggItems data={item} key={item.card.info.id} dummy={dummy} />
+          )
       )}
     </div>
   );
