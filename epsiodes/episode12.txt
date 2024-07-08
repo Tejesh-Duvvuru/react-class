@@ -1,0 +1,10 @@
+Redux 
+
+if you are using large scale read abd write operations
+then we use redux 
+redux is not mandiatory
+
+
+it is a good partice to keep in big object => it is okay
+
+but we make slice easy to make (logical part)

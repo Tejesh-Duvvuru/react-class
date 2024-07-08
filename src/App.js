@@ -14,6 +14,9 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenuCard from "./components/RestaurantMenuCard";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./reduxStore/Store";
+import Cart from "./components/Cart";
 // import Instamart from "./components/Instamart";
 const Instamart = lazy(() => import("./components/Instamart"));
 
@@ -43,17 +46,19 @@ const AppLayout = () => {
     setUserName("tejesh");
   }, []);
   return (
-    //UserContext.Provider is setting a value and writting businnse logic
-    //we can wrap only which part we need
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        {/* <UserContext.Provider value={{ loggedInUser: "teja" }}> */}
-        <Header />
-        {/* </UserContext.Provider> */}
-        {/* Oultet will replace by the childeren component */}
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      {/* UserContext.Provider is setting a value and writting businnse logic //we
+      can wrap only which part we need */}
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          {/* <UserContext.Provider value={{ loggedInUser: "teja" }}> */}
+          <Header />
+          {/* </UserContext.Provider> */}
+          {/* Oultet will replace by the childeren component */}
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -91,6 +96,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:restaurantId",
         element: <RestaurantMenuCard />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

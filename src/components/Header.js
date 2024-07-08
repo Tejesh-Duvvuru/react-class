@@ -2,10 +2,26 @@ import { useEffect, useState, useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [login, setLogin] = useState("Login");
   const data = useContext(UserContext);
+
+  //we can also subscription to entire store but problem is data got complicate
+  // const cartSto = useSelector((store) => {
+  //   // subscription to the store particular chanell
+  //   return store;
+  // });
+
+  // const cartData = cartSto.cartitems
+
+  //subscription to the store particular channel
+  const cartData = useSelector((store) => {
+    // console.log(store);
+    //subscription to the store particular chaneel
+    return store.cart.items;
+  });
 
   //when a setstate variable entire component will rerenders
 
@@ -47,7 +63,10 @@ const Header = () => {
           <li className="mx-2">
             <Link to="/mart">Insta Mart</Link>
           </li>
-          <li className="mx-2">Cart</li>
+
+          <li className="mx-2">
+            <Link to={"/cart"}>Cart: {cartData.length} items</Link>
+          </li>
           <button
             onClick={() => {
               login === "Login" ? setLogin("Logout") : setLogin("Login");
