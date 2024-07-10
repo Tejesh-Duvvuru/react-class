@@ -14,6 +14,8 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenuCard from "./components/RestaurantMenuCard";
 import UserContext from "./utils/UserContext";
+import { CartContextProvider } from "./utils/CartContext";
+import Cart from "./components/Cart";
 // import Instamart from "./components/Instamart";
 const Instamart = lazy(() => import("./components/Instamart"));
 
@@ -45,15 +47,17 @@ const AppLayout = () => {
   return (
     //UserContext.Provider is setting a value and writting businnse logic
     //we can wrap only which part we need
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        {/* <UserContext.Provider value={{ loggedInUser: "teja" }}> */}
-        <Header />
-        {/* </UserContext.Provider> */}
-        {/* Oultet will replace by the childeren component */}
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <CartContextProvider>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          {/* <UserContext.Provider value={{ loggedInUser: "teja" }}> */}
+          <Header />
+          {/* </UserContext.Provider> */}
+          {/* Oultet will replace by the childeren component */}
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </CartContextProvider>
   );
 };
 
@@ -79,6 +83,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/mart",

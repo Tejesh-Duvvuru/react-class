@@ -2,10 +2,14 @@ import { useEffect, useState, useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { CartContext } from "../utils/CartContext";
 
 const Header = () => {
   const [login, setLogin] = useState("Login");
   const data = useContext(UserContext);
+  const { cartValue } = useContext(CartContext);
+  // console.log("data", data);
+  console.log("cartData", cartValue);
 
   //when a setstate variable entire component will rerenders
 
@@ -47,7 +51,9 @@ const Header = () => {
           <li className="mx-2">
             <Link to="/mart">Insta Mart</Link>
           </li>
-          <li className="mx-2">Cart</li>
+          <li className="mx-2">
+            <Link to="/cart">Cart items:{cartValue.length}</Link>
+          </li>
           <button
             onClick={() => {
               login === "Login" ? setLogin("Logout") : setLogin("Login");
